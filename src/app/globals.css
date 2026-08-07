@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Base palette */
+  --color-cream: #f7f2e8;
+  --color-cream-soft: #fbf8f2;
+  --color-charcoal: #202020;
+  --color-charcoal-soft: #4a4642;
+
+  /* Accent */
+  --color-burnt: #c95436;
+  --color-burnt-dark: #a8432a;
+  --color-burnt-tint: #f3ded7;
+
+  /* Category / decorative pastels */
+  --color-pastel-blue: #bcd8e8;
+  --color-butter: #f2dd83;
+  --color-sage: #bcd18d;
+  --color-pink: #edb8c2;
+
+  /* Feedback */
+  --color-border: #e4dcc9;
 }
 
+/* `inline` here because these values reference variables set at runtime by
+   next/font (via a className on <html>), not static values Tailwind can
+   inline at build time. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-dm-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Editorial headings use the display serif by default */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+/* Consistent, visible focus ring instead of the browser default outline */
+:focus-visible {
+  outline: 2px solid var(--color-burnt);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-butter);
+  color: var(--color-charcoal);
+}
+
+/* Subtle notebook/grid-paper texture, used sparingly on small section backgrounds */
+.bg-grid-paper {
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Highlighter-marker effect behind a short phrase, e.g. <span class="highlight-mark"> */
+.highlight-mark {
+  background-image: linear-gradient(var(--color-butter), var(--color-butter));
+  background-repeat: no-repeat;
+  background-size: 100% 0.42em;
+  background-position: 0 78%;
+}
+
+/* Lock body scroll while the native <details>-based mobile menu is open —
+   pure CSS, no JS/effect needed to stay in sync with the menu's state. */
+body:has(.mobile-menu[open]) {
+  overflow: hidden;
+}
+
+/* Explicit, !important-qualified closed/open state for the mobile menu's
+   backdrop + drawer. This is intentionally redundant with the Tailwind
+   `hidden group-open:*` utilities on the same elements — !important here
+   means this rule wins regardless of utility class ordering or specificity,
+   so there is no code path where the overlay can be closed but still
+   exist as a hit-testable, pointer-events:auto layer over the page. */
+.mobile-menu-overlay {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+details.mobile-menu[open] .mobile-menu-overlay {
+  display: flex !important;
+  pointer-events: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
