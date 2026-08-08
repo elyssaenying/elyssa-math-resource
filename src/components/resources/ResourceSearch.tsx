@@ -19,7 +19,7 @@ export default function ResourceSearch({
         onChange={(event) => onChange(event.target.value)}
         placeholder="Search notes, worksheets, topics..."
         aria-label="Search resources"
-        className="w-full rounded-full border border-border bg-cream-soft py-3 pl-12 pr-4 font-sans text-base text-charcoal placeholder:text-charcoal-soft/70 focus:border-burnt"
+        className="w-full rounded-full border border-border bg-cream-soft py-3 pl-12 pr-4 font-sans text-base text-charcoal placeholder:text-charcoal-soft focus:border-burnt"
       />
     </div>
   );

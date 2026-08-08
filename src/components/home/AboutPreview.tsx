@@ -22,9 +22,9 @@ export default function AboutPreview() {
         />
 
         <div>
-          <p className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-burnt-dark">
+          <h2 className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-burnt-dark">
             Who made all this?
-          </p>
+          </h2>
           <p className="mt-2 max-w-lg font-sans text-base text-charcoal-soft">
             [ABOUT ME INTRODUCTION — a couple of sentences introducing
             yourself and why you put this resource hub together.]

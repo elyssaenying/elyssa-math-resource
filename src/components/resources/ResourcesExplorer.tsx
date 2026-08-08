@@ -186,6 +186,7 @@ export default function ResourcesExplorer() {
         </div>
       )}
 
+      <h2 className="sr-only">Results</h2>
       <p className="mt-6 font-sans text-sm text-charcoal-soft">
         {results.length} resource{results.length === 1 ? "" : "s"}
       </p>

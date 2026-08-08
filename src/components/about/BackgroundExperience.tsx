@@ -19,9 +19,9 @@ const items = [
 export default function BackgroundExperience() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-      <p className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-burnt-dark">
+      <h2 className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-burnt-dark">
         Background
-      </p>
+      </h2>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {items.map((item) => (
           <div

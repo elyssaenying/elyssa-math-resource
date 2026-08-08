@@ -12,9 +12,9 @@ export default function WhyThisExists() {
           variant="star"
           className="absolute bottom-8 right-10 hidden size-6 text-charcoal/20 sm:block"
         />
-        <p className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-burnt-dark">
+        <h2 className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-burnt-dark">
           Why This Resource Hub Exists
-        </p>
+        </h2>
         <p className="mx-auto mt-4 max-w-2xl font-display text-2xl italic leading-snug text-charcoal sm:text-3xl">
           [WHY I CREATED THESE RESOURCES — what gap you noticed, and what
           you wanted students to have access to.]

@@ -8,7 +8,7 @@ const tones: Record<BadgeTone, string> = {
   sage: "bg-sage text-charcoal",
   pink: "bg-pink text-charcoal",
   neutral: "bg-cream-soft text-charcoal-soft border border-border",
-  burnt: "bg-burnt text-cream-soft",
+  burnt: "bg-burnt-dark text-cream-soft",
 };
 
 export default function Badge({

@@ -56,7 +56,7 @@ export default function ResourceCard({ resource }: { resource: Resource }) {
       </p>
 
       {resource.isDemo ? (
-        <p className="font-sans text-xs italic text-charcoal-soft/70">
+        <p className="font-sans text-xs italic text-charcoal-soft">
           Demo entry — no file attached yet
         </p>
       ) : (
@@ -65,7 +65,7 @@ export default function ResourceCard({ resource }: { resource: Resource }) {
             href={resource.file}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-burnt px-4 py-2 font-sans text-sm font-semibold text-cream-soft hover:bg-burnt-dark"
+            className="inline-flex items-center gap-2 rounded-full bg-burnt-dark px-4 py-2 font-sans text-sm font-semibold text-cream-soft hover:bg-charcoal"
           >
             <FileText className="size-4" aria-hidden="true" />
             View

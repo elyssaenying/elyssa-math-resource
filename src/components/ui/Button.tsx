@@ -9,7 +9,7 @@ const base =
   "group inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burnt disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-burnt text-cream-soft hover:bg-burnt-dark",
+  primary: "bg-burnt-dark text-cream-soft hover:bg-charcoal",
   secondary:
     "bg-transparent text-charcoal border border-charcoal hover:bg-charcoal hover:text-cream-soft",
   ghost: "bg-transparent text-charcoal hover:text-burnt-dark",

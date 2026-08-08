@@ -40,7 +40,7 @@ function ToggleGroup<T extends string>({
               onChange={() => onChange(option.id)}
               className="peer sr-only"
             />
-            <span className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border border-border bg-cream-soft px-4 py-2 font-sans text-sm font-medium text-charcoal transition-colors peer-checked:border-burnt peer-checked:bg-burnt peer-checked:text-cream-soft peer-hover:border-burnt peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-burnt">
+            <span className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border border-border bg-cream-soft px-4 py-2 font-sans text-sm font-medium text-charcoal transition-colors peer-checked:border-burnt-dark peer-checked:bg-burnt-dark peer-checked:text-cream-soft peer-hover:border-burnt peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-burnt">
               {option.label}
             </span>
           </label>
