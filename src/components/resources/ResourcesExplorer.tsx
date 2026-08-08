@@ -49,17 +49,6 @@ export default function ResourcesExplorer() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // --- TEMPORARY DIAGNOSTICS (remove before shipping) ---
-  const [hydrated, setHydrated] = useState(false);
-  const [lastChange, setLastChange] = useState("(none yet)");
-  const [urlDisplay, setUrlDisplay] = useState("(not set yet)");
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- temporary diagnostic: this IS the check
-    setHydrated(true);
-  }, []);
-  // --- end temporary diagnostics setup ---
-
   const [level, setLevel] = useState<LevelId | "all">(() => {
     const value = searchParams.get("level");
     return isLevelId(value) ? value : "all";
@@ -95,33 +84,14 @@ export default function ResourcesExplorer() {
     );
   }
 
-  // TEMPORARY: explicit named handlers (instead of passing raw setters) so we
-  // can record which callback actually fired, for on-screen diagnostics.
   function handleLevelChange(nextLevel: LevelId | "all") {
-    setLastChange(`level -> ${nextLevel}`);
     setLevel(nextLevel);
     resetTopicIfInvalid(topicsFor(nextLevel, subject));
   }
 
   function handleSubjectChange(nextSubject: SubjectId | "all") {
-    setLastChange(`subject -> ${nextSubject}`);
     setSubject(nextSubject);
     resetTopicIfInvalid(topicsFor(level, nextSubject));
-  }
-
-  function handleTopicChange(nextTopic: string) {
-    setLastChange(`topic -> ${nextTopic}`);
-    setTopic(nextTopic);
-  }
-
-  function handleTypeChange(nextType: ResourceType | "all") {
-    setLastChange(`type -> ${nextType}`);
-    setType(nextType);
-  }
-
-  function handleQueryChange(nextQuery: string) {
-    setLastChange(`query -> "${nextQuery}"`);
-    setQuery(nextQuery);
   }
 
   useEffect(() => {
@@ -136,9 +106,6 @@ export default function ResourcesExplorer() {
     router.replace(queryString ? `${pathname}?${queryString}` : pathname, {
       scroll: false,
     });
-    // TEMPORARY: mirror what we just told the router, for diagnostics.
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- temporary diagnostic
-    setUrlDisplay(queryString ? `?${queryString}` : "(no query string)");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level, subject, topic, type, query]);
 
@@ -156,7 +123,6 @@ export default function ResourcesExplorer() {
     query !== "";
 
   function clearAll() {
-    setLastChange("clear-all");
     setLevel("all");
     setSubject("all");
     setTopic("all");
@@ -166,27 +132,8 @@ export default function ResourcesExplorer() {
 
   return (
     <div>
-      {/* TEMPORARY DEBUG PANEL — remove once diagnosis is complete */}
-      <div className="fixed bottom-0 left-0 right-0 z-[999] max-h-[45vh] overflow-y-auto border-t-4 border-pink-500 bg-yellow-200 p-3 font-mono text-[11px] leading-snug text-black shadow-[0_-4px_12px_rgba(0,0,0,0.3)]">
-        <p className="mb-1 font-bold">DEBUG (temporary — remove after diagnosis)</p>
-        <p>Hydrated: {hydrated ? "YES" : "NO"}</p>
-        <p>React level: {level}</p>
-        <p>React subject: {subject}</p>
-        <p>React topic: {topic}</p>
-        <p>React type: {type}</p>
-        <p>React query: &quot;{query}&quot;</p>
-        <p>Results: {results.length}</p>
-        <p>
-          window.location.search (live):{" "}
-          {typeof window !== "undefined" ? window.location.search || "(empty)" : "(no window)"}
-        </p>
-        <p>URL set by router.replace (last effect run): {urlDisplay}</p>
-        <p>Last change: {lastChange}</p>
-      </div>
-      {/* END TEMPORARY DEBUG PANEL */}
-
       <div className="flex flex-col gap-6 rounded-3xl border border-border bg-cream-soft p-5 sm:p-6">
-        <ResourceSearch value={query} onChange={handleQueryChange} />
+        <ResourceSearch value={query} onChange={setQuery} />
         <ResourceFilters
           level={level}
           subject={subject}
@@ -195,8 +142,8 @@ export default function ResourcesExplorer() {
           availableTopics={availableTopics}
           onLevelChange={handleLevelChange}
           onSubjectChange={handleSubjectChange}
-          onTopicChange={handleTopicChange}
-          onTypeChange={handleTypeChange}
+          onTopicChange={setTopic}
+          onTypeChange={setType}
         />
       </div>
 
@@ -243,7 +190,7 @@ export default function ResourcesExplorer() {
         {results.length} resource{results.length === 1 ? "" : "s"}
       </p>
 
-      <div className="mt-4 pb-[45vh]">
+      <div className="mt-4">
         {results.length > 0 ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {results.map((resource) => (
