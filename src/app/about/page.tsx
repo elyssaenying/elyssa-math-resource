@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutStory from "@/components/about/AboutStory";
 import WhyThisExists from "@/components/about/WhyThisExists";
-import BackgroundExperience from "@/components/about/BackgroundExperience";
 import FunFacts from "@/components/about/FunFacts";
 import InlineCTA from "@/components/ui/InlineCTA";
 import { site } from "@/data/site";
@@ -18,7 +17,6 @@ export default function AboutPage() {
       <AboutHero />
       <AboutStory />
       <WhyThisExists />
-      <BackgroundExperience />
       <FunFacts />
 
       <InlineCTA

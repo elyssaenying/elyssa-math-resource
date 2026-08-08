@@ -22,7 +22,12 @@ export default function UnboxedSection() {
 
           <div className="max-w-xl">
             <p className="font-sans text-base leading-relaxed text-charcoal-soft">
-              [SHORT DESCRIPTION OF UNBOXED — to be provided.]
+              Unboxed specialises in personalised Math lessons designed
+              around each student&rsquo;s learning needs. Beyond the
+              curriculum, students are also given space to explore their
+              interests and discover what they enjoy, with opportunities to
+              develop those interests further. I currently teach Math at
+              Unboxed, including Primary and Secondary students.
             </p>
             <a
               href={site.unboxedUrl}

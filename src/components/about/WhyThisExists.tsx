@@ -16,8 +16,15 @@ export default function WhyThisExists() {
           Why This Resource Hub Exists
         </h2>
         <p className="mx-auto mt-4 max-w-2xl font-display text-2xl italic leading-snug text-charcoal sm:text-3xl">
-          [WHY I CREATED THESE RESOURCES — what gap you noticed, and what
-          you wanted students to have access to.]
+          Math is less about seeing the answer immediately, and more about
+          learning how to connect the dots.
+        </p>
+        <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-charcoal-soft">
+          I made this resource hub for students who feel like they&rsquo;re
+          still struggling with Math. I want these resources to make
+          revision feel less overwhelming — with notes that break concepts
+          down clearly, highlight the patterns and steps worth noticing,
+          and help you go into your exams with a little more confidence.
         </p>
       </div>
     </section>

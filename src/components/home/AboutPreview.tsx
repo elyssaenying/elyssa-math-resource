@@ -26,8 +26,10 @@ export default function AboutPreview() {
             Who made all this?
           </h2>
           <p className="mt-2 max-w-lg font-sans text-base text-charcoal-soft">
-            [ABOUT ME INTRODUCTION — a couple of sentences introducing
-            yourself and why you put this resource hub together.]
+            I know how overwhelming Math can feel when everything looks like
+            a wall of numbers. I&apos;ve had my own setbacks too, so I focus
+            on breaking concepts down, spotting patterns, and knowing what
+            to look out for in exams.
           </p>
           <div className="mt-4">
             <Button href="/about" variant="secondary" showArrow>

@@ -13,17 +13,54 @@ export default function AboutStory() {
           </h2>
           <div className="mt-5 space-y-4 font-sans text-base leading-relaxed text-charcoal-soft">
             <p>
-              [MY STORY — write about your journey with mathematics: your
-              own experience with the subject, what led you to teaching,
-              and what keeps you doing it.]
+              I&rsquo;ve always liked Math, but my journey with it
+              definitely wasn&rsquo;t a straight line. I failed Math in
+              lower primary, improved by PSLE, was pretty average again in
+              lower secondary, and eventually started scoring consistently
+              well.
             </p>
             <p>
-              [TEACHING EXPERIENCE — describe the students and levels
-              you&apos;ve taught, and for how long.]
+              Somewhere along the way, I also became the friend people
+              would ask for help with Math. I really enjoyed explaining
+              questions, sharing tips, and showing my friends how to spot
+              keywords, patterns and the steps behind different question
+              types.
             </p>
             <p>
-              [WHY I ENJOY TEACHING MATHEMATICS — a personal note on what
-              draws you to the subject and to teaching it.]
+              What I realised was that a lot of the struggle wasn&rsquo;t
+              because someone was &ldquo;bad at Math&rdquo;. Often, it was
+              because they were jumping straight into questions without
+              first understanding the concept or recognising the patterns
+              behind them.
+            </p>
+            <p>
+              I&rsquo;ve had setbacks again since then — including
+              struggling with Math in JC — so I know what it feels like
+              when a subject you thought you understood suddenly becomes
+              difficult. Learning how to study more intentionally helped me
+              work my way back up, and that experience shapes the way I
+              teach today.
+            </p>
+            <p>
+              I&rsquo;ve been teaching privately since 2024 — mainly
+              Secondary E-Math and A-Math — and I currently teach Math at
+              Unboxed.
+            </p>
+            <p>
+              For a little background, I&rsquo;m currently studying
+              Mathematical Sciences at NTU, and I earned A grades for H2
+              Math at A Levels, as well as E-Math and A-Math at O Levels.
+            </p>
+            <p>
+              My favourite part of teaching is seeing that
+              &ldquo;Aha!&rdquo; moment when something finally clicks.
+            </p>
+            <p>
+              I believe everyone has the ability to improve at Math. A big
+              part of it is learning how the ideas connect, recognising
+              patterns, and knowing what a question is really asking you to
+              do. Once those dots start connecting, Math becomes a lot less
+              intimidating.
             </p>
           </div>
         </div>

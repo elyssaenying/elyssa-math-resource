@@ -17,12 +17,13 @@ export default function AboutHero() {
           Who made these resources?
         </h1>
         <p className="mt-6 max-w-lg font-sans text-lg text-charcoal-soft">
-          [ABOUT ME INTRODUCTION — a warm, personal opening paragraph. Who
-          are you, and why did you put this resource hub together?]
+          Hi, I&rsquo;m Elyssa. I&rsquo;m studying Mathematical Sciences at
+          NTU and teaching Math alongside it. I enjoy helping students see
+          that Math becomes much more manageable once the ideas start
+          connecting.
         </p>
         <p className="mt-4 max-w-lg font-sans text-base text-charcoal-soft">
-          I&apos;m {site.teacherName}, and I teach {site.subjectsTaught} for{" "}
-          {site.levelsTaught} students.
+          I teach {site.subjectsTaught} for {site.levelsTaught} students.
         </p>
       </div>
 

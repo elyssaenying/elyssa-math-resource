@@ -25,8 +25,6 @@ export const site = {
     telegram: null as string | null,
     instagram: null as string | null,
   },
-  yearsExperience: "[YEARS OF EXPERIENCE]",
-  qualification: "[QUALIFICATION]",
   levelsTaught: "Secondary 3–4",
   subjectsTaught: "E-Math · A-Math",
   /** Official Unboxed URL — kept here so it's only ever hard-coded once. */
