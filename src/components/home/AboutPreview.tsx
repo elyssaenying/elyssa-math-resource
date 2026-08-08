@@ -12,12 +12,11 @@ export default function AboutPreview() {
           className="absolute -top-6 left-24 hidden w-14 -scale-x-100 text-sage sm:block"
         />
         <PhotoFrame
-          src={undefined}
+          src="/images/teacher/portrait-main.jpg"
           alt={`${site.teacherName} — small photo`}
           aspect="square"
           accent="sage"
           compact
-          hint="public/images/teacher/about-me.jpg"
           className="w-20 shrink-0 sm:w-24"
         />
 

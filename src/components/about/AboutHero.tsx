@@ -28,7 +28,7 @@ export default function AboutHero() {
       </div>
 
       <PhotoFrame
-        src={undefined}
+        src="/images/teacher/portrait-main.jpg"
         alt={`${site.teacherName} — main portrait`}
         aspect="portrait"
         accent="butter"
