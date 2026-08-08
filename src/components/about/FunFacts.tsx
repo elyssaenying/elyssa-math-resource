@@ -7,9 +7,9 @@ export default function FunFacts() {
         Outside Math
       </h2>
       <div className="mt-5 flex flex-wrap gap-2">
-        <Badge tone="blue">[Fun fact 1]</Badge>
-        <Badge tone="butter">[Fun fact 2]</Badge>
-        <Badge tone="pink">[Fun fact 3]</Badge>
+        <Badge tone="blue">Netball player since secondary school 🏐</Badge>
+        <Badge tone="butter">I know how to play Chinese chess ♟️</Badge>
+        <Badge tone="pink">Moo by name, cow fan by nature 🐄</Badge>
       </div>
     </section>
   );
