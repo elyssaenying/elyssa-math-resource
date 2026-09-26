@@ -8,7 +8,7 @@ import FilterChip from "@/components/resources/FilterChip";
 import ResourceCard from "@/components/resources/ResourceCard";
 import EmptyState from "@/components/ui/EmptyState";
 import Button from "@/components/ui/Button";
-import { getAllResources, filterResources } from "@/lib/resources";
+import { getAllResources, filterResourcesWithMeta } from "@/lib/resources";
 import {
   getAllTopics,
   getLevelLabel,
@@ -16,6 +16,7 @@ import {
   getSubjectLabel,
   getTopicLabel,
   getTopics,
+  getTopicsForSubject,
 } from "@/data/subjects";
 import type { LevelId, ResourceType, SubjectId } from "@/types/resource";
 
@@ -34,7 +35,6 @@ function isResourceType(value: string | null): value is ResourceType {
     !!value &&
     [
       "notes",
-      "worksheet",
       "practice",
       "revision",
       "formula-sheet",
@@ -67,12 +67,14 @@ export default function ResourcesExplorer() {
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
 
   const availableTopics = useMemo(() => {
-    if (level === "all" || subject === "all") return getAllTopics();
+    if (subject === "all") return getAllTopics();
+    if (level === "all") return getTopicsForSubject(subject);
     return getTopics(level, subject);
   }, [level, subject]);
 
   function topicsFor(nextLevel: LevelId | "all", nextSubject: SubjectId | "all") {
-    if (nextLevel === "all" || nextSubject === "all") return getAllTopics();
+    if (nextSubject === "all") return getAllTopics();
+    if (nextLevel === "all") return getTopicsForSubject(nextSubject);
     return getTopics(nextLevel, nextSubject);
   }
 
@@ -109,11 +111,14 @@ export default function ResourcesExplorer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level, subject, topic, type, query]);
 
-  const results = useMemo(
+  const resultState = useMemo(
     () =>
-      filterResources(ALL_RESOURCES, { level, subject, topic, type, query }),
+      filterResourcesWithMeta(ALL_RESOURCES, {
+        level, subject, topic, type, query,
+      }),
     [level, subject, topic, type, query],
   );
+  const results = resultState.resources;
 
   const hasActiveFilters =
     level !== "all" ||
@@ -187,8 +192,10 @@ export default function ResourcesExplorer() {
       )}
 
       <h2 className="sr-only">Results</h2>
-      <p className="mt-6 font-sans text-sm text-charcoal-soft">
-        {results.length} resource{results.length === 1 ? "" : "s"}
+      <p className="mt-6 font-sans text-sm text-charcoal-soft" aria-live="polite">
+        {resultState.usedClosestMatch && query.trim()
+          ? `Showing ${results.length} closest matches for “${query.trim()}”`
+          : `${results.length} resource${results.length === 1 ? "" : "s"}`}
       </p>
 
       <div className="mt-4">

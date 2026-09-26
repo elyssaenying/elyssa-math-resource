@@ -1,5 +1,6 @@
 import { RESOURCES } from "@/data/resources";
-import { getResourceTypeLabel, getTopicLabel } from "@/data/subjects";
+import { searchResources } from "@/lib/resource-search";
+import type { ResourceSearchResult } from "@/lib/resource-search";
 import type { LevelId, Resource, ResourceType, SubjectId } from "@/types/resource";
 
 export interface ResourceFilterState {
@@ -18,37 +19,31 @@ export const DEFAULT_FILTER_STATE: ResourceFilterState = {
   query: "",
 };
 
-export function filterResources(
+export function filterResourcesWithMeta(
   resources: Resource[],
   filters: ResourceFilterState,
-): Resource[] {
-  const query = filters.query.trim().toLowerCase();
-
-  return resources.filter((resource) => {
+): ResourceSearchResult {
+  const filtered = resources.filter((resource) => {
     if (filters.level !== "all" && resource.level !== filters.level) return false;
     if (filters.subject !== "all" && resource.subject !== filters.subject)
       return false;
     if (filters.topic !== "all" && resource.topic !== filters.topic) return false;
     if (filters.type !== "all" && resource.type !== filters.type) return false;
-
-    if (query) {
-      const haystack = [
-        resource.title,
-        resource.description,
-        getTopicLabel(resource.topic),
-        getResourceTypeLabel(resource.type),
-      ]
-        .join(" ")
-        .toLowerCase();
-      if (!haystack.includes(query)) return false;
-    }
-
     return true;
   });
+
+  return searchResources(filtered, filters.query);
+}
+
+export function filterResources(
+  resources: Resource[],
+  filters: ResourceFilterState,
+): Resource[] {
+  return filterResourcesWithMeta(resources, filters).resources;
 }
 
 export function getFeaturedResources(limit = 3): Resource[] {
-  return RESOURCES.filter((r) => r.featured).slice(0, limit);
+  return RESOURCES.filter((resource) => resource.featured).slice(0, limit);
 }
 
 export function getAllResources(): Resource[] {

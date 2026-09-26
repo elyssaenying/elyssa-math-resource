@@ -6,7 +6,7 @@ import DecorativeDoodle from "@/components/ui/DecorativeDoodle";
 export const metadata: Metadata = {
   title: "Resource Library",
   description:
-    "Search and filter secondary math notes, worksheets, revision material and more.",
+    "Search and filter secondary math notes, practice, revision material and more.",
 };
 
 export default function ResourcesPage() {

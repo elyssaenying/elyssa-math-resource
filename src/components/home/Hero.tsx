@@ -1,8 +1,6 @@
-import { ExternalLink } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import DecorativeDoodle from "@/components/ui/DecorativeDoodle";
-import { site } from "@/data/site";
 
 export default function Hero() {
   return (
@@ -14,15 +12,12 @@ export default function Hero() {
             className="absolute -top-8 left-0 hidden size-8 text-butter sm:block"
           />
           <h1 className="text-4xl leading-[1.08] text-charcoal sm:text-5xl lg:text-6xl">
-            Math resources,{" "}
-            <span className="whitespace-nowrap highlight-mark">
-              minus the mess.
-            </span>
+            <span className="highlight-mark">Math resources.</span>
           </h1>
 
           <p className="mt-6 max-w-md font-sans text-lg text-charcoal-soft">
-            Notes, worksheets and revision resources for Secondary E-Math and
-            A-Math — organised so you can actually find what you need.
+            Notes, practice and revision resources for Secondary E-Math and
+            A-Math, organised so you can actually find what you need.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -33,16 +28,6 @@ export default function Hero() {
               About Me
             </Button>
           </div>
-
-          <a
-            href={site.unboxedUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-1.5 font-sans text-sm font-medium text-charcoal-soft hover:text-burnt-dark"
-          >
-            Visit Unboxed
-            <ExternalLink className="size-3.5" aria-hidden="true" />
-          </a>
         </div>
 
         <div className="pointer-events-none relative aspect-[5/4] w-full max-w-lg mx-auto lg:max-w-none">

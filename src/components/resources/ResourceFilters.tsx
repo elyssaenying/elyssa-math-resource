@@ -103,7 +103,7 @@ export default function ResourceFilters({
             <option value="all">All Topics</option>
             {availableTopics.map((t) => (
               <option key={t.id} value={t.id}>
-                {t.label}
+                {t.displayLabel ?? t.label}
               </option>
             ))}
           </select>

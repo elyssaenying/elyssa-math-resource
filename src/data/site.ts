@@ -1,22 +1,20 @@
 /**
  * SITE / PERSONAL CONTENT CONFIGURATION
  *
- * Centralised details you're likely to update often. See README.md →
- * "How to edit my details" for guidance. Anything wrapped in [BRACKETS]
- * is a placeholder — replace it with your real information.
+ * Centralised details you're likely to update often. See README.md ->
+ * "How to edit site-wide details" for guidance.
  *
- * This file intentionally does NOT hold every sentence on the website —
- * long-form page content (About Me story, FAQs, etc.) lives directly in
- * each page's components, clearly marked with placeholder comments.
+ * Long-form page content lives directly in each page's components so it
+ * remains easy to read and edit in context.
  */
 
 export const site = {
   teacherName: "ELYSSA MOO",
   /** Short line used in the footer and browser tab title */
-  tagline: "Math resources, minus the mess.",
+  tagline: "Math resources.",
   /** One or two sentences, used in the homepage intro and meta description */
   shortBio:
-    "Currently a Year 3 student in NTU, studying Mathematical Science. Teaching as a Primary and Secondary Mathematics Teacher @ Unboxed.",
+    "Studying Mathematical Sciences at NTU and creating Secondary Mathematics resources.",
   /** Not shown anywhere in the UI right now — kept here for later use. */
   email: "elyssaenying1@gmail.com",
   /** Optional — leave the value as null to hide a channel entirely */

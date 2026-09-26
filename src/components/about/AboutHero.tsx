@@ -29,7 +29,7 @@ export default function AboutHero() {
 
       <PhotoFrame
         src="/images/teacher/portrait-main.jpg"
-        alt={`${site.teacherName} — main portrait`}
+        alt={`Portrait of ${site.teacherName}`}
         aspect="portrait"
         accent="butter"
         hint="public/images/teacher/portrait-main.jpg"

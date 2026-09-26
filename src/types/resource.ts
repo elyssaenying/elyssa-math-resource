@@ -4,7 +4,6 @@ export type SubjectId = "e-math" | "a-math";
 
 export type ResourceType =
   | "notes"
-  | "worksheet"
   | "practice"
   | "revision"
   | "formula-sheet"
@@ -23,6 +22,8 @@ export interface Resource {
   topic: string;
   type: ResourceType;
   description: string;
+  /** Extra student-friendly search terms, abbreviations and related concepts. */
+  keywords?: string[];
   /** Path to the file inside /public, e.g. "/resources/secondary-4/a-math/differentiation-basics.pdf" */
   file: string;
   /** ISO date string, e.g. "2026-03-01" */
@@ -30,6 +31,4 @@ export interface Resource {
   /** Show this resource in the homepage "Featured Resources" section */
   featured?: boolean;
   difficulty?: Difficulty;
-  /** Marks sample/placeholder entries used to preview the layout. Not real materials. */
-  isDemo?: boolean;
 }

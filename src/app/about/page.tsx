@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "About Me",
-  description: `Who made these Secondary E-Math and A-Math resources — ${site.teacherName}.`,
+  description: `Meet ${site.teacherName}, the person behind these Secondary E-Math and A-Math resources.`,
 };
 
 export default function AboutPage() {
@@ -23,8 +23,6 @@ export default function AboutPage() {
         title="Want to see what I've put together?"
         buttonLabel="Explore Resources"
         href="/resources"
-        secondaryLabel="Visit Unboxed"
-        secondaryHref={site.unboxedUrl}
       />
     </>
   );

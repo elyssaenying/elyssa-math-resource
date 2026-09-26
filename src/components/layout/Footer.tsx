@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
 import { NAV_LINKS, site } from "@/data/site";
 
 export default function Footer() {
@@ -26,15 +25,6 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href={site.unboxedUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-sans text-sm text-charcoal-soft hover:text-burnt-dark"
-            >
-              Unboxed
-              <ExternalLink className="size-3.5" aria-hidden="true" />
-            </a>
           </nav>
         </div>
 

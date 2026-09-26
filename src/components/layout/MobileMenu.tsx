@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { ExternalLink, Menu, X } from "lucide-react";
-import { NAV_LINKS, site } from "@/data/site";
+import { Menu, X } from "lucide-react";
+import { NAV_LINKS } from "@/data/site";
 
 /**
  * Mobile navigation, built on native <details>/<summary>.
@@ -68,16 +68,6 @@ export default function MobileMenu({ pathname }: { pathname: string }) {
             </Link>
           );
         })}
-        <a
-          href={site.unboxedUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={close}
-          className="mt-2 flex items-center gap-2 rounded-2xl border-t border-border px-4 py-4 pt-5 font-sans text-lg font-medium text-charcoal-soft hover:bg-cream"
-        >
-          Unboxed
-          <ExternalLink className="size-4" aria-hidden="true" />
-        </a>
       </nav>
     </details>
   );

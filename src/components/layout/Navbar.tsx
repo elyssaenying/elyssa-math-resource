@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ExternalLink } from "lucide-react";
 import { NAV_LINKS, site } from "@/data/site";
 import MobileMenu from "@/components/layout/MobileMenu";
 
@@ -36,7 +35,7 @@ export default function Navbar() {
                   aria-current={isActive ? "page" : undefined}
                   className={`rounded-full px-4 py-2 font-sans text-sm font-medium transition-colors ${
                     isResources
-                      ? "border border-burnt text-burnt-dark hover:bg-burnt hover:text-cream-soft"
+                      ? "border border-burnt text-burnt-dark hover:bg-charcoal hover:text-cream-soft"
                       : isActive
                         ? "text-burnt-dark"
                         : "text-charcoal hover:text-burnt-dark"
@@ -47,17 +46,6 @@ export default function Navbar() {
               </li>
             );
           })}
-          <li>
-            <a
-              href={site.unboxedUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full px-4 py-2 font-sans text-sm font-medium text-charcoal-soft hover:text-burnt-dark"
-            >
-              Unboxed
-              <ExternalLink className="size-3.5" aria-hidden="true" />
-            </a>
-          </li>
         </ul>
 
         <MobileMenu pathname={pathname} />

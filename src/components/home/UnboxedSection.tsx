@@ -26,8 +26,7 @@ export default function UnboxedSection() {
               around each student&rsquo;s learning needs. Beyond the
               curriculum, students are also given space to explore their
               interests and discover what they enjoy, with opportunities to
-              develop those interests further. I currently teach Math at
-              Unboxed, including Primary and Secondary students.
+              develop those interests further.
             </p>
             <a
               href={site.unboxedUrl}

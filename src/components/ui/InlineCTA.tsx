@@ -13,7 +13,7 @@ export default function InlineCTA({
   description?: string;
   buttonLabel?: string;
   href?: string;
-  /** Optional external link (e.g. "Visit Unboxed") rendered below the primary button. */
+  /** Optional external link rendered below the primary button. */
   secondaryLabel?: string;
   secondaryHref?: string;
 }) {

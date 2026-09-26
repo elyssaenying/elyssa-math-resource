@@ -38,7 +38,10 @@ export default function ResourceCard({ resource }: { resource: Resource }) {
             {resource.title}
           </h3>
         </div>
-        <FileText className="mt-1 size-5 shrink-0 text-charcoal-soft/40" aria-hidden="true" />
+        <FileText
+          className="mt-1 size-5 shrink-0 text-charcoal-soft/40"
+          aria-hidden="true"
+        />
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -55,31 +58,25 @@ export default function ResourceCard({ resource }: { resource: Resource }) {
         {resource.description}
       </p>
 
-      {resource.isDemo ? (
-        <p className="font-sans text-xs italic text-charcoal-soft">
-          Demo entry — no file attached yet
-        </p>
-      ) : (
-        <div className="flex flex-wrap gap-3 pt-1">
-          <a
-            href={resource.file}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-burnt-dark px-4 py-2 font-sans text-sm font-semibold text-cream-soft hover:bg-charcoal"
-          >
-            <FileText className="size-4" aria-hidden="true" />
-            View
-          </a>
-          <a
-            href={resource.file}
-            download
-            className="inline-flex items-center gap-2 rounded-full border border-charcoal px-4 py-2 font-sans text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-cream-soft"
-          >
-            <Download className="size-4" aria-hidden="true" />
-            Download
-          </a>
-        </div>
-      )}
+      <div className="flex flex-wrap gap-3 pt-1">
+        <a
+          href={resource.file}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full bg-burnt-dark px-4 py-2 font-sans text-sm font-semibold text-cream-soft hover:bg-charcoal"
+        >
+          <FileText className="size-4" aria-hidden="true" />
+          View
+        </a>
+        <a
+          href={resource.file}
+          download
+          className="inline-flex items-center gap-2 rounded-full border border-charcoal px-4 py-2 font-sans text-sm font-semibold text-charcoal hover:bg-charcoal hover:text-cream-soft"
+        >
+          <Download className="size-4" aria-hidden="true" />
+          Download
+        </a>
+      </div>
     </article>
   );
 }

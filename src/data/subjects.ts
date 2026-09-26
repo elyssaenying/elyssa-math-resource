@@ -14,6 +14,9 @@ import type { LevelId, ResourceType, SubjectId } from "@/types/resource";
 export interface Topic {
   id: string;
   label: string;
+  subjectId: SubjectId;
+  /** Context-aware label used only where subject ambiguity needs resolving. */
+  displayLabel?: string;
 }
 
 export interface SubjectConfig {
@@ -21,7 +24,7 @@ export interface SubjectConfig {
   label: string;
   /** Full name shown in places like page titles */
   fullName: string;
-  topics: Topic[];
+  topics: Pick<Topic, "id" | "label">[];
 }
 
 export interface LevelConfig {
@@ -42,13 +45,16 @@ export const LEVELS: LevelConfig[] = [
         label: "E-Math",
         fullName: "Elementary Mathematics",
         topics: [
-          { id: "algebra", label: "Algebra" },
-          { id: "functions-graphs", label: "Functions and Graphs" },
-          { id: "geometry", label: "Geometry" },
-          { id: "trigonometry", label: "Trigonometry" },
-          { id: "mensuration", label: "Mensuration" },
-          { id: "statistics", label: "Statistics" },
-          { id: "probability", label: "Probability" },
+          { id: "emath-numbers-proportion", label: "Numbers & Proportion" },
+          { id: "emath-algebra", label: "Algebra" },
+          { id: "emath-functions-graphs", label: "Functions and Graphs" },
+          { id: "emath-coordinate-geometry", label: "Coordinate Geometry" },
+          { id: "emath-geometry", label: "Geometry" },
+          { id: "emath-trigonometry", label: "Trigonometry" },
+          { id: "emath-mensuration", label: "Mensuration" },
+          { id: "emath-statistics", label: "Statistics" },
+          { id: "emath-probability", label: "Probability" },
+          { id: "emath-mixed-topics", label: "Mixed Topics" },
         ],
       },
       {
@@ -56,11 +62,11 @@ export const LEVELS: LevelConfig[] = [
         label: "A-Math",
         fullName: "Additional Mathematics",
         topics: [
-          { id: "algebra", label: "Algebra" },
-          { id: "functions", label: "Functions" },
-          { id: "quadratic-functions", label: "Quadratic Functions" },
-          { id: "coordinate-geometry", label: "Coordinate Geometry" },
-          { id: "trigonometry", label: "Trigonometry" },
+          { id: "amath-algebra-equations", label: "Algebra & Equations" },
+          { id: "amath-functions", label: "Functions" },
+          { id: "amath-quadratic-functions", label: "Quadratic Functions" },
+          { id: "amath-coordinate-geometry", label: "Coordinate Geometry" },
+          { id: "amath-trigonometry", label: "Trigonometry" },
         ],
       },
     ],
@@ -75,13 +81,13 @@ export const LEVELS: LevelConfig[] = [
         label: "E-Math",
         fullName: "Elementary Mathematics",
         topics: [
-          { id: "algebra", label: "Algebra" },
-          { id: "functions-graphs", label: "Functions and Graphs" },
-          { id: "geometry", label: "Geometry" },
-          { id: "trigonometry", label: "Trigonometry" },
-          { id: "mensuration", label: "Mensuration" },
-          { id: "statistics", label: "Statistics" },
-          { id: "probability", label: "Probability" },
+          { id: "emath-algebra", label: "Algebra" },
+          { id: "emath-functions-graphs", label: "Functions and Graphs" },
+          { id: "emath-geometry", label: "Geometry" },
+          { id: "emath-trigonometry", label: "Trigonometry" },
+          { id: "emath-mensuration", label: "Mensuration" },
+          { id: "emath-statistics", label: "Statistics" },
+          { id: "emath-probability", label: "Probability" },
         ],
       },
       {
@@ -89,14 +95,14 @@ export const LEVELS: LevelConfig[] = [
         label: "A-Math",
         fullName: "Additional Mathematics",
         topics: [
-          { id: "algebra", label: "Algebra" },
-          { id: "functions", label: "Functions" },
-          { id: "quadratic-functions", label: "Quadratic Functions" },
-          { id: "logarithms-exponentials", label: "Logarithms / Exponentials" },
-          { id: "coordinate-geometry", label: "Coordinate Geometry" },
-          { id: "trigonometry", label: "Trigonometry" },
-          { id: "differentiation", label: "Differentiation" },
-          { id: "integration", label: "Integration" },
+          { id: "amath-algebra-equations", label: "Algebra & Equations" },
+          { id: "amath-functions", label: "Functions" },
+          { id: "amath-quadratic-functions", label: "Quadratic Functions" },
+          { id: "amath-logarithms-exponentials", label: "Logarithms / Exponentials" },
+          { id: "amath-coordinate-geometry", label: "Coordinate Geometry" },
+          { id: "amath-trigonometry", label: "Trigonometry" },
+          { id: "amath-differentiation", label: "Differentiation" },
+          { id: "amath-integration", label: "Integration" },
         ],
       },
     ],
@@ -105,7 +111,6 @@ export const LEVELS: LevelConfig[] = [
 
 export const RESOURCE_TYPES: { id: ResourceType; label: string }[] = [
   { id: "notes", label: "Notes" },
-  { id: "worksheet", label: "Worksheet" },
   { id: "practice", label: "Practice" },
   { id: "revision", label: "Revision" },
   { id: "formula-sheet", label: "Formula Sheet" },
@@ -125,20 +130,58 @@ export function getSubject(
 }
 
 export function getTopics(levelId: LevelId, subjectId: SubjectId): Topic[] {
-  return getSubject(levelId, subjectId)?.topics ?? [];
+  const subject = getSubject(levelId, subjectId);
+  return (
+    subject?.topics.map((topic) => ({ ...topic, subjectId: subject.id })) ?? []
+  );
 }
 
-/** All topics across every level/subject, de-duplicated by id, for the "All Topics" filter. */
+/** All topics for one subject across levels, de-duplicated by id. */
+export function getTopicsForSubject(subjectId: SubjectId): Topic[] {
+  const seen = new Map<string, Topic>();
+
+  for (const level of LEVELS) {
+    for (const topic of getTopics(level.id, subjectId)) {
+      if (!seen.has(topic.id)) seen.set(topic.id, topic);
+    }
+  }
+
+  return Array.from(seen.values());
+}
+
+/**
+ * All topics across every level/subject, de-duplicated by id, for the
+ * "All Topics" filter. Canonical labels stay short; labels shared by both
+ * subjects receive a subject qualifier in this global context only.
+ */
 export function getAllTopics(): Topic[] {
   const seen = new Map<string, Topic>();
   for (const level of LEVELS) {
     for (const subject of level.subjects) {
       for (const topic of subject.topics) {
-        if (!seen.has(topic.id)) seen.set(topic.id, topic);
+        if (!seen.has(topic.id)) {
+          seen.set(topic.id, { ...topic, subjectId: subject.id });
+        }
       }
     }
   }
-  return Array.from(seen.values());
+
+  const topics = Array.from(seen.values());
+  const subjectIdsByLabel = new Map<string, Set<SubjectId>>();
+
+  for (const topic of topics) {
+    const subjectIds = subjectIdsByLabel.get(topic.label) ?? new Set<SubjectId>();
+    subjectIds.add(topic.subjectId);
+    subjectIdsByLabel.set(topic.label, subjectIds);
+  }
+
+  return topics.map((topic) => ({
+    ...topic,
+    displayLabel:
+      (subjectIdsByLabel.get(topic.label)?.size ?? 0) > 1
+        ? `${topic.label} (${getSubjectLabel(topic.subjectId)})`
+        : topic.label,
+  }));
 }
 
 export function getResourceTypeLabel(type: ResourceType): string {

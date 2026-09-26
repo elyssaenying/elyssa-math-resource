@@ -20,11 +20,11 @@ export default function WhyThisExists() {
           learning how to connect the dots.
         </p>
         <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-charcoal-soft">
-          I made this resource hub for students who feel like they&rsquo;re
-          still struggling with Math. I want these resources to make
-          revision feel less overwhelming — with notes that break concepts
-          down clearly, highlight the patterns and steps worth noticing,
-          and help you go into your exams with a little more confidence.
+          I made this resource hub because I know revision can feel
+          overwhelming, especially when you&rsquo;re already struggling with
+          Math. I want the notes here to break things down clearly, show the
+          patterns and steps to look out for, and help you go into exams
+          feeling a little more confident.
         </p>
       </div>
     </section>

@@ -16,18 +16,26 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
+const description =
+  "Secondary E-Math and A-Math notes, practice and revision resources for students.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tuition-site-seven.vercel.app"),
   title: {
     default: `${site.teacherName} | Secondary Math Resources`,
     template: `%s | ${site.teacherName}`,
   },
-  description:
-    "Secondary E-Math and A-Math notes, worksheets and revision resources for students.",
+  description,
   openGraph: {
     title: `${site.teacherName} | Secondary Math Resources`,
-    description:
-      "Secondary E-Math and A-Math notes, worksheets and revision resources for students.",
+    description,
     type: "website",
+    siteName: `${site.teacherName} — Math Resource Hub`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.teacherName} | Secondary Math Resources`,
+    description,
   },
 };
 

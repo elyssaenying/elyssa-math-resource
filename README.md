@@ -1,272 +1,241 @@
 # ELYSSA MOO — Math Resource Hub
 
-A student-facing secondary math resource hub (notes, worksheets, revision
-material) with a short About page — built with Next.js, TypeScript and
-Tailwind CSS. This is not a tuition-advertising site; there's no contact
-form or lesson-sales page by design.
+A student-facing Secondary Mathematics resource hub for notes, practice and
+revision material. It is built with Next.js, TypeScript and Tailwind CSS.
 
-This README is written for someone who isn't a professional developer.
-Follow the steps and you'll be fine — nothing here requires deep coding
-knowledge. Anywhere you see `CODE LIKE THIS`, type it into your terminal
-exactly as shown.
+This is not a tuition-advertising website. There is intentionally no contact
+form, lesson-sales page, login, booking system or payment system.
 
----
+Public website: <https://tuition-site-seven.vercel.app>
 
-## Prerequisites
+## How to run the website locally
 
-You need [Node.js](https://nodejs.org) installed (version 20 or later).
-If you're not sure whether you have it, open a terminal and run:
+You need Node.js version 20 or later.
 
-```bash
-node -v
-```
+1. Open a terminal in the `tuition-site` folder.
+2. Install the dependencies:
 
-If that prints a version number, you're set. If it says "command not
-found", download and install Node.js from [nodejs.org](https://nodejs.org)
-(choose the "LTS" version) and try again.
-
----
-
-## How to run the site on your computer
-
-1. Open a terminal in this folder (`tuition-site`).
-2. Install the project's dependencies (only needed once, or after you
-   update dependencies):
    ```bash
    npm install
    ```
+
 3. Start the development server:
+
    ```bash
    npm run dev
    ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The site will automatically reload whenever you save a file.
+4. Open <http://localhost:3000>.
 
----
+The local website only works while the development server is running.
 
-## How to edit my details
+## How to edit site-wide details
 
-Open **`src/data/site.ts`**. This is the one place that holds your name,
-tagline, short bio, email, social links and the Unboxed URL. Look for
-anything in `[BRACKETS]` — replace those with your real details:
+Open `src/data/site.ts`. It contains the information reused across the site:
 
-```ts
-teacherName: "ELYSSA MOO",
-shortBio: "Currently a Year 3 student in NTU, studying Mathematical Science. Teaching as a Primary and Secondary Mathematics Teacher @ Unboxed.",
-email: "elyssaenying1@gmail.com",   // not shown anywhere in the UI right now
-yearsExperience: "[YEARS OF EXPERIENCE]", // still a placeholder — fill in when ready
-qualification: "[QUALIFICATION]",         // still a placeholder — fill in when ready
-```
+- teacher name
+- tagline
+- short biography
+- levels and subjects taught
+- navigation links
+- the official Unboxed URL
 
-To add a WhatsApp/Telegram/Instagram link, fill in the matching field
-under `social:` in the same file (leave it as `null` to hide that
-channel entirely).
+The email address is stored there for possible future use but is not displayed
+publicly.
 
-`unboxedUrl` in the same file (`https://www.theunboxed.co/`) is the one
-place the Unboxed link is defined — it's used by both the navbar and
-the homepage Unboxed section, so you only ever need to change it once.
-The Unboxed section's description text is still a `[BRACKET]`
-placeholder in `src/components/home/UnboxedSection.tsx` — edit it there
-once you have real copy.
+Longer page-specific copy lives directly in the related components:
 
-**Longer, page-specific text** (the About page story, philosophy, etc.)
-is NOT in `site.ts` — it lives directly inside each page so it reads
-naturally. Open these files and replace anything in `[BRACKETS]`:
-
-- `src/app/about/page.tsx` and `src/components/about/*.tsx` — your
-  story, experience, qualifications, why you made this resource hub, etc.
-- `src/components/home/*.tsx` — homepage section copy (hero, About
-  preview, Unboxed description).
-
----
+- `src/components/home/` — homepage copy
+- `src/components/about/` — About page copy
 
 ## How to change photos
 
-Photos live in **`public/images/teacher/`**. Until you add a file, every
-photo spot on the site shows a neat placeholder ("Photo coming soon")
-instead of a broken image — so the site always looks intentional.
+Teacher photos are stored in `public/images/teacher/`.
 
-To add a photo:
+Current files include:
 
-1. Save your image into `public/images/teacher/`. Suggested names (used
-   as hints throughout the site, but you can name them anything):
-   - `portrait-main.jpg` — main portrait at the top of the About page
-   - `about-me.jpg` — small photo next to "Who made all this?" on the homepage
-   - `teaching.jpg` — a teaching-in-progress photo (About page)
-   - `desk.jpg` — desk/materials photo (About page)
-2. Open the component that shows that photo (e.g.
-   `src/components/home/AboutPreview.tsx` for the small homepage photo,
-   or `src/components/about/AboutHero.tsx` and `AboutPhotoGrid.tsx` for
-   the About page — the homepage hero itself has no photo by design).
-3. Find the `<PhotoFrame ... src={undefined} ... />` and change it to
-   point at your file:
-   ```tsx
-   src="/images/teacher/portrait-main.jpg"
-   ```
-   (Note the leading `/` — files in `public/` are served from the site root.)
+- `portrait-main.jpg` — About hero and homepage About preview
+- `fun-chinese-chess.jpg` — Chinese chess card
+- `fun-one-piece.jpg` — anime and One Piece card
+- `fun-netball.jpg` — netball card
+- `fun-cow.jpg` — cow-related card
 
-The browser tab icon (favicon) is still the default Next.js one. To
-replace it, drop your own `favicon.ico` into `src/app/`, overwriting
-the existing file.
+Photo paths and alt text are configured in:
 
----
+- `src/components/about/AboutHero.tsx`
+- `src/components/home/AboutPreview.tsx`
+- `src/components/about/FunFacts.tsx`
+
+Use clear JPG or PNG files with descriptive alt text. The About hero and
+homepage preview intentionally reuse the same portrait with different crops.
 
 ## How to add a resource
 
-All resources (notes, worksheets, revision sheets, etc.) are listed in
-**one file**: `src/data/resources.ts`. You never need to touch any
-component to add a resource.
+All resource metadata is stored in one file:
 
-1. **Put the file** (PDF, etc.) inside the matching folder under
-   `public/resources/`, e.g.:
-   ```
+`src/data/resources.ts`
+
+You do not need to edit a React component for each new PDF.
+
+1. Put the PDF inside the matching level and subject folder, for example:
+
+   ```text
    public/resources/secondary-4/a-math/differentiation-basics.pdf
    ```
-2. **Open** `src/data/resources.ts`.
-3. **Copy** one of the existing resource objects (or the template below)
-   and paste it into the `RESOURCES` array.
-4. **Change** the fields to match your resource:
+
+2. Open `src/data/resources.ts`.
+3. Copy an existing resource object and change its fields:
+
    ```ts
    {
-     id: "sec4-amath-differentiation-basics", // unique, no spaces
+     id: "sec4-amath-differentiation-basics", // unique and URL-safe
      title: "Differentiation Basics",
-     level: "sec-4",           // "sec-3" | "sec-4"
-     subject: "a-math",        // "e-math" | "a-math"
-     topic: "differentiation", // must match a topic id in src/data/subjects.ts
-     type: "notes",            // notes | worksheet | practice | revision | formula-sheet | answer-key | other
-     description: "A short, honest description of what this covers.",
+     level: "sec-4",                          // "sec-3" | "sec-4"
+     subject: "a-math",                       // "e-math" | "a-math"
+     topic: "amath-differentiation",          // from src/data/subjects.ts
+     type: "notes",                           // see the list below
+     description: "A clear summary of what the PDF covers.",
+     keywords: ["derivative", "gradient", "rate of change"],
      file: "/resources/secondary-4/a-math/differentiation-basics.pdf",
-     dateAdded: "2026-08-01",  // today's date, YYYY-MM-DD
-     featured: false,          // true to show it on the homepage
-     difficulty: "intermediate", // optional: foundational | intermediate | challenging
+     dateAdded: "2026-09-22",                 // YYYY-MM-DD
+     featured: false,
+     difficulty: "intermediate",              // optional
    }
    ```
-   Do **not** set `isDemo: true` — that flag is only for the sample
-   placeholder entries and hides the View/Download buttons.
-5. **Save the file** and run `npm run dev` (if it isn't already running).
-6. **Confirm** the resource appears on the `/resources` page, and that
-   the View/Download buttons open your file correctly.
 
-Once you've added your own resources, feel free to delete the `[DEMO]`
-entries already in the file — they're just there to preview the layout.
+4. Save the file.
+5. Open `/resources` and confirm that the new card appears and both PDF buttons
+   work.
 
----
+Current resource types are:
 
-## How to add a new topic (or level, or subject)
+- `notes`
+- `practice`
+- `revision`
+- `formula-sheet`
+- `answer-key`
+- `other`
 
-All filter categories come from **one file**: `src/data/subjects.ts`.
-Nothing else needs to change — the Resource Library filters, dropdowns
-and badges all read from this file automatically.
+Use `practice` for worksheets, question sheets and practice sets. Difficulty is
+optional and should only be added when the label is genuinely useful.
 
-To add a topic, find the right level → subject in `LEVELS` and add a
-new entry to its `topics` array:
+`keywords` do not appear on the resource card. They help search recognise
+abbreviations, related ideas and small spelling mistakes, such as `P1` or
+`beaings` for Bearings.
+
+## How to add or rename a topic
+
+Levels, subjects, topics and resource types are configured in:
+
+`src/data/subjects.ts`
+
+Find the correct level and subject, then add a topic with a stable,
+subject-scoped ID:
 
 ```ts
-{ id: "vectors", label: "Vectors" },
+{ id: "amath-vectors", label: "Vectors" }
 ```
 
-The `id` is what you'll use in `resources.ts` when tagging a resource
-with that topic; `label` is what students see.
+Use the same ID in `resource.topic`. Keep labels short and student-friendly.
+Do not create dozens of narrow topics before real files require them.
 
----
+## How search and filters work
+
+- Level, Subject, Topic and Resource Type are structural filters.
+- The search checks titles, topics, descriptions and hidden keywords.
+- Search accepts common short forms such as `P1` and tolerates small spelling
+  mistakes.
+- Filter and search choices are reflected in the URL query string.
+
+Relevant files:
+
+- `src/components/resources/ResourcesExplorer.tsx`
+- `src/components/resources/ResourceFilters.tsx`
+- `src/lib/resources.ts`
+- `src/lib/resource-search.ts`
+
+The Level and Subject controls use native radio inputs. The mobile menu uses
+native `<details>/<summary>`. These implementations were chosen after physical
+iPhone Safari testing and should not be casually replaced.
 
 ## How to change colours
 
-Open **`src/app/globals.css`** and look at the `@theme` block near the
-top. Each line is one colour:
+Colour tokens are defined in the `@theme` block in `src/app/globals.css`.
 
 ```css
---color-cream: #f7f2e8;   /* page background */
---color-charcoal: #202020; /* main text */
---color-burnt: #c95436;    /* primary accent (buttons, large headings) */
---color-burnt-dark: #a8432a; /* accent used for small text/links — kept
-                                 darker so it stays readable at small sizes */
+--color-cream: #f7f2e8;
+--color-cream-soft: #fbf8f2;
+--color-charcoal: #202020;
+--color-charcoal-soft: #4a4642;
+--color-burnt: #c95436;
+--color-burnt-dark: #a8432a;
 --color-pastel-blue: #bcd8e8;
 --color-butter: #f2dd83;
 --color-sage: #bcd18d;
 --color-pink: #edb8c2;
 ```
 
-Change the hex value and every component using that colour updates
-automatically. If you introduce a bold new accent colour, please check
-it still reads clearly as text on the cream background — small light
-colours can become hard to read (there's a free contrast checker at
-[webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/)
-if you want to double-check).
-
----
+Small cream text should use `burnt-dark` or charcoal backgrounds for sufficient
+contrast.
 
 ## How to change navigation
 
-Open **`src/data/site.ts`** and edit the `NAV_LINKS` array:
+Edit `NAV_LINKS` in `src/data/site.ts`:
 
 ```ts
-export const NAV_LINKS: NavLink[] = [
+export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Resources", href: "/resources" },
   { label: "About Me", href: "/about" },
 ];
 ```
 
-This one list drives both the desktop navbar and the mobile menu. The
-"Unboxed ↗" link is intentionally not in this list — it's an external
-link (not a page on this site), so it's added separately in
-`src/components/layout/Navbar.tsx` and `MobileMenu.tsx`, both reading
-`site.unboxedUrl` so there's still only one place to update the URL.
+This list drives desktop and mobile navigation. The external link in the
+homepage Unboxed section uses the central `site.unboxedUrl` value.
 
----
+## Quality checks
 
-## How to build for production
+Before publishing, run:
 
 ```bash
+npx tsc --noEmit
+npm run lint
 npm run build
 ```
 
-This checks the whole site (types, lint, build) and produces an
-optimized version in `.next/`. Worth running this before you deploy,
-so you catch any typos in `[BRACKETS]` placeholders or broken links
-early. You can preview the production build locally with:
+Then check:
 
-```bash
-npm run start
-```
+- `/`
+- `/resources`
+- `/about`
+- mobile navigation
+- resource filters and typo-tolerant search
+- PDF View and Download links
+- mobile widths around 375–430px
 
----
+## Deployment
 
-## How to deploy
+The GitHub repository is:
 
-This is a standard Next.js site, so it deploys cleanly to
-[Vercel](https://vercel.com) (made by the Next.js team) for free on
-their hobby tier:
+<https://github.com/elyssaenying/secondary-math-resources>
 
-1. Push this project to a GitHub repository.
-2. Go to [vercel.com/new](https://vercel.com/new) and import that
-   repository.
-3. Leave the default settings (Vercel detects Next.js automatically)
-   and click Deploy.
+It is connected to the existing Vercel project. Pushing an approved commit to
+the `main` branch triggers an automatic production deployment.
 
-Any other host that supports Node.js (Netlify, Render, your own
-server, etc.) will also work — see the
-[Next.js deployment docs](https://nextjs.org/docs/app/getting-started/deploying)
-for details.
+Do not create another Vercel project or configure a static export.
 
----
+## Project structure
 
-## Project structure (for reference)
-
-```
+```text
 src/
-  app/            One folder per page/route (/, about, resources)
-  components/     UI building blocks, grouped by page/section
-  data/           Editable content — site.ts, subjects.ts, resources.ts
-  lib/            Small helper functions (resource filtering)
-  types/          TypeScript types
+  app/            Routes, metadata, favicon, sitemap and robots
+  components/     Reusable layout, page and UI components
+  data/           Site content, taxonomy and resource metadata
+  lib/            Resource filtering and search helpers
+  types/          Shared TypeScript types
 public/
-  images/teacher/ Your photos
-  resources/      Your resource files (PDFs etc.), organised by level/subject
+  images/teacher/ Teacher photos
+  resources/      PDFs organised by level and subject
 ```
 
-There is no `/contact` or `/tuition` route — this site is a resource
-hub, not a tuition-enquiry site. If you want a contact page back later,
-just ask.
+The available routes are `/`, `/resources` and `/about`.

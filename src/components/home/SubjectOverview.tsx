@@ -26,7 +26,7 @@ export default function SubjectOverview() {
       <SectionHeading
         eyebrow="Resource Library"
         title="Find your level and subject."
-        description="Jump straight into notes, worksheets and revision material organised by level and subject."
+        description="Jump straight into notes, practice and revision material organised by level and subject."
       />
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
