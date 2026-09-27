@@ -217,7 +217,7 @@ Then check:
 
 The GitHub repository is:
 
-<https://github.com/elyssaenying/secondary-math-resources>
+<https://github.com/elyssaenying/elyssa-math-resource>
 
 It is connected to the existing Vercel project. Pushing an approved commit to
 the `main` branch triggers an automatic production deployment.
