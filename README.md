@@ -1,4 +1,4 @@
-# ELYSSA MOO — Math Resource Hub
+# Elyssa Moo Math — Secondary Math Resource Hub
 
 A student-facing Secondary Mathematics resource hub for notes, practice and
 revision material. It is built with Next.js, TypeScript and Tailwind CSS.

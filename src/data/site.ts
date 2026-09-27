@@ -9,6 +9,7 @@
  */
 
 export const site = {
+  siteName: "Elyssa Moo Math",
   teacherName: "ELYSSA MOO",
   /** Short line used in the footer and browser tab title */
   tagline: "Math resources.",

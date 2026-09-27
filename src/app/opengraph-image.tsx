@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "ELYSSA MOO — Secondary Math Resources";
+export const alt = "Elyssa Moo Math — Secondary Math Resources";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -50,7 +50,7 @@ export default function OpenGraphImage() {
                 textTransform: "uppercase",
               }}
             >
-              Secondary Math Resource Hub
+              Elyssa Moo Math
             </div>
             <div
               style={{

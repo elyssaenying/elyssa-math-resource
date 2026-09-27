@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           <div>
-            <p className="font-display text-lg text-charcoal">{site.teacherName}</p>
+            <p className="font-display text-lg text-charcoal">{site.siteName}</p>
             <p className="mt-1 max-w-xs font-sans text-sm text-charcoal-soft">
               {site.tagline}
             </p>

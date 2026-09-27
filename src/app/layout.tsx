@@ -22,19 +22,19 @@ const description =
 export const metadata: Metadata = {
   metadataBase: new URL("https://tuition-site-seven.vercel.app"),
   title: {
-    default: `${site.teacherName} | Secondary Math Resources`,
-    template: `%s | ${site.teacherName}`,
+    default: `${site.siteName} | Secondary Math Resources`,
+    template: `%s | ${site.siteName}`,
   },
   description,
   openGraph: {
-    title: `${site.teacherName} | Secondary Math Resources`,
+    title: `${site.siteName} | Secondary Math Resources`,
     description,
     type: "website",
-    siteName: `${site.teacherName} — Math Resource Hub`,
+    siteName: site.siteName,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.teacherName} | Secondary Math Resources`,
+    title: `${site.siteName} | Secondary Math Resources`,
     description,
   },
 };

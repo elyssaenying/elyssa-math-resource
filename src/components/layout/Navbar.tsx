@@ -18,7 +18,7 @@ export default function Navbar() {
           href="/"
           className="font-display text-xl font-medium text-charcoal"
         >
-          {site.teacherName}
+          {site.siteName}
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
