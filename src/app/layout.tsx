@@ -20,7 +20,7 @@ const description =
   "Secondary E-Math and A-Math notes, practice and revision resources for students.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tuition-site-seven.vercel.app"),
+  metadataBase: new URL("https://elyssamathresource.vercel.app"),
   title: {
     default: `${site.siteName} | Secondary Math Resources`,
     template: `%s | ${site.siteName}`,

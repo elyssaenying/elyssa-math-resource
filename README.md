@@ -6,7 +6,7 @@ revision material. It is built with Next.js, TypeScript and Tailwind CSS.
 This is not a tuition-advertising website. There is intentionally no contact
 form, lesson-sales page, login, booking system or payment system.
 
-Public website: <https://tuition-site-seven.vercel.app>
+Public website: <https://elyssamathresource.vercel.app>
 
 ## How to run the website locally
 
