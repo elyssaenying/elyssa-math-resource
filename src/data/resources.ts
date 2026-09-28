@@ -8,14 +8,14 @@ import type { Resource } from "@/types/resource";
  */
 export const RESOURCES: Resource[] = [
   {
-    id: "sec3-amath-quadratic-functions-quick-recap",
-    title: "Quadratic Functions Quick Recap",
+    id: "sec3-amath-quadratic-functions-summary",
+    title: "Quadratic Functions Summary",
     level: "sec-3",
     subject: "a-math",
     topic: "amath-quadratic-functions",
     type: "notes",
     description:
-      "A one-page summary of completing the square, turning points, always-positive or always-negative quadratics, and simple models.",
+      "A two-page summary of graph shape, turning points, completing the square, solving quadratic equations, sign conditions, and simple models.",
     keywords: [
       "quadratics",
       "parabola",
@@ -24,9 +24,10 @@ export const RESOURCES: Resource[] = [
       "maximum",
       "minimum",
       "complete the square",
+      "solve quadratic equations",
       "quadratic model",
     ],
-    file: "/resources/secondary-3/a-math/quadratic-functions-quick-recap.pdf",
+    file: "/resources/secondary-3/a-math/quadratic-functions-summary.pdf",
     dateAdded: "2026-09-28",
   },
   {
