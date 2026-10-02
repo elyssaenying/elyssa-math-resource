@@ -8,6 +8,35 @@ import type { Resource } from "@/types/resource";
  */
 export const RESOURCES: Resource[] = [
   {
+    id: "sec3-amath-equations-inequalities-summary",
+    title: "Equations and Inequalities Summary",
+    level: "sec-3",
+    subject: "a-math",
+    topic: "amath-algebra-equations",
+    type: "notes",
+    description:
+      "A nine-page summary of quadratic equations, discriminants, simultaneous equations and quadratic inequalities, with six practice questions, working space and separate worked answers.",
+    keywords: [
+      "equations and inequalities",
+      "quadratic formula",
+      "discriminant",
+      "nature of roots",
+      "real roots",
+      "repeated roots",
+      "simultaneous equations",
+      "substitution",
+      "line and curve intersections",
+      "tangent",
+      "quadratic inequalities",
+      "number line",
+      "always positive",
+      "always negative",
+      "worked solutions",
+    ],
+    file: "/resources/secondary-3/a-math/equations-and-inequalities-summary.pdf",
+    dateAdded: "2026-10-02",
+  },
+  {
     id: "sec3-amath-quadratic-functions-summary",
     title: "Quadratic Functions Summary",
     level: "sec-3",
