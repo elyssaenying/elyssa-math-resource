@@ -26,9 +26,9 @@ export interface Resource {
   keywords?: string[];
   /** Path to the file inside /public, e.g. "/resources/secondary-4/a-math/differentiation-basics.pdf" */
   file: string;
-  /** ISO date string, e.g. "2026-03-01" */
+  /** Added date in YYYY-MM-DD format; determines homepage recency order. */
   dateAdded: string;
-  /** Show this resource in the homepage "Featured Resources" section */
+  /** Optional editorial flag; not used by the homepage's date-based selection. */
   featured?: boolean;
   difficulty?: Difficulty;
 }

@@ -42,8 +42,11 @@ export function filterResources(
   return filterResourcesWithMeta(resources, filters).resources;
 }
 
-export function getFeaturedResources(limit = 3): Resource[] {
-  return RESOURCES.filter((resource) => resource.featured).slice(0, limit);
+/** Newest added dates first; preserve library order when dates are equal. */
+export function getRecentResources(limit = 3): Resource[] {
+  return [...RESOURCES]
+    .sort((a, b) => b.dateAdded.localeCompare(a.dateAdded))
+    .slice(0, limit);
 }
 
 export function getAllResources(): Resource[] {

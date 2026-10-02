@@ -2,17 +2,17 @@ import Button from "@/components/ui/Button";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EmptyState from "@/components/ui/EmptyState";
 import ResourceCard from "@/components/resources/ResourceCard";
-import { getFeaturedResources } from "@/lib/resources";
+import { getRecentResources } from "@/lib/resources";
 
 export default function FeaturedResources() {
-  const resources = getFeaturedResources(3);
+  const resources = getRecentResources(3);
 
   return (
     <section className="bg-butter/15 py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
-            eyebrow="Featured"
+            eyebrow="Latest"
             title="Recently added resources."
           />
           <Button href="/resources" variant="ghost" showArrow>

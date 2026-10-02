@@ -98,7 +98,6 @@ You do not need to edit a React component for each new PDF.
      keywords: ["derivative", "gradient", "rate of change"],
      file: "/resources/secondary-4/a-math/differentiation-basics.pdf",
      dateAdded: "2026-09-22",                 // YYYY-MM-DD
-     featured: false,
      difficulty: "intermediate",              // optional
    }
    ```
@@ -106,6 +105,11 @@ You do not need to edit a React component for each new PDF.
 4. Save the file.
 5. Open `/resources` and confirm that the new card appears and both PDF buttons
    work.
+
+The homepage's "Recently added resources" section automatically shows the three
+newest resources by `dateAdded` (use `YYYY-MM-DD`). It does not use a week/month
+cutoff or require a `featured` flag. Resources added on the same date retain
+their order in `src/data/resources.ts`.
 
 Current resource types are:
 
